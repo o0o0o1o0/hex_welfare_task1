@@ -1,0 +1,20 @@
+.cards{
+  .cover{
+    overflow: hidden;
+  }
+  .fav {
+    // width: 20px;
+    // height: 20px;
+    top: 0;
+    right: 0;
+  }
+  .hot {
+    top: 0;
+    left: 0;
+  }
+}
+
+.pagination .btn {
+  width: 60px;
+  height: 60px;
+}

@@ -1,0 +1,109 @@
+@import './reset';
+
+// color
+@each $key, $value in $color-map {
+  .text-#{$key} {
+    color: $value;
+  }
+  .bg-#{$key} {
+    background-color: $value;
+    @if $key=='primary'{
+      color: $white;
+    }
+  }
+  .bd-#{$key} {
+    border: 1px solid $value;
+  }
+}
+
+
+// size
+$mp-map: (
+  t: top,
+  b: bottom,
+  s: left,
+  e: right,
+);
+@for $i from 10 through 0 {
+  .m-#{$i}{
+    margin: $i * 10px;
+  }
+  .p-#{$i}{
+    padding: $i * 10px;
+  }
+  .mx-#{$i}{
+    margin-left: $i * 10px;
+    margin-right: $i * 10px;
+  }
+  .my-#{$i}{
+    margin-top: $i * 10px;
+    margin-bottom: $i * 10px;
+  }
+  .px-#{$i}{
+    padding-left: $i * 10px;
+    padding-right: $i * 10px;
+  }
+  .py-#{$i}{
+    padding-top: $i * 10px;
+    padding-bottom: $i * 10px;
+  }
+  @each $key, $value in $mp-map{
+    .m#{$key}-#{$i} {
+      margin-#{$value}: $i * 10px;
+    }
+    .p#{$key}-#{$i} {
+      padding-#{$value}: $i * 10px;
+    }
+  }
+}
+
+@for $i from 0 through 5 {
+  .w-#{$i}{
+    width: (100% / 5) * $i;
+  }
+  .h-#{$i}{
+    height: (100% / 5) * $i;
+  }
+}
+
+// flex
+@mixin flex($d:row, $jc:center, $ai:center) {
+  display: flex;
+  flex-direction: $d;
+  flex-wrap: wrap;
+  justify-content: $jc;
+  align-items: $ai;
+}
+$jc-map:(
+  c: center,
+  s: flex-start,
+  e: flex-end,
+  st: stretch,
+  sa: space-around,
+  sb: space-between,
+  se: space-evenly
+);
+$ai-map:(
+  c: center,
+  s: flex-start,
+  e: flex-end,
+  st: stretch,
+);
+@each $key,$value in $jc-map{
+  @each $k, $v in $ai-map {
+    .f-r-#{$key}-#{$k}{
+      @include flex(row, $value, $v);
+    }
+    .f-c-#{$key}-#{$k}{
+      @include flex(column, $value, $v);
+    }
+  }
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i}{
+    width: 100% * ($i / 12) ;
+  }
+}
+
+@import './custom';
